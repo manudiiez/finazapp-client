@@ -1,0 +1,14 @@
+@import '../index.scss';
+
+.button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        .icon {
+            stroke: $color-5;
+        }
+    }
+
+}
