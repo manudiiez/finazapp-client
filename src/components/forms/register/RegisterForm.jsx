@@ -36,7 +36,7 @@ const RegisterForm = () => {
                         email: formValue.email,
                         password: formValue.password,
                         redirect: true,
-                        callbackUrl: '/'
+                        callbackUrl: '/panel'
                     });
                     return "Usuario registrado correctamente!!"
                 },
