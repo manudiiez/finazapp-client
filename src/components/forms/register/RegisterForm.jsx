@@ -4,53 +4,47 @@ import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './RegisterForm.form';
 import styles from '../forms.module.scss'
 import { User } from '@/api/user';
-import Swal from 'sweetalert2';
 import { useState } from 'react';
-import Loader from '@/components/shared/Loader';
 import { signIn } from 'next-auth/react';
+import { toast } from 'sonner';
 
 const RegisterForm = () => {
     const userCtrl = new User()
     const [loading, setLoading] = useState(false);
+
+    const handleClick = (formValue) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                resolve(await userCtrl.register(formValue))
+            } catch (error) {
+                console.log(error);
+                reject(error);
+            }
+        })
+    }
+
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: validationSchema(),
         validateOnChange: false,
         onSubmit: async (formValue) => {
-            try {
-                setLoading(true)
-                const data = await userCtrl.register(formValue)
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 1500,
-                    timerProgressBar: true,
-                });
-                await Toast.fire({
-                    icon: "success",
-                    title: "Usuario registrado correctamente"
-                });
-                await signIn("credentials", {
-                    email: data.user.email,
-                    password: formValue.password,
-                    redirect: true,
-                    callbackUrl: '/'
-                });
-                setLoading(false)
-            } catch (error) {
-                console.log(error);
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                });
-                Toast.fire({
-                    icon: "error",
-                    title: error[0]
-                });
-                setLoading(false)
-            }
+            setLoading(true)
+            toast.promise(handleClick(formValue), {
+                loading: 'Creando...',
+                success: async () => {
+                    await signIn("credentials", {
+                        email: formValue.email,
+                        password: formValue.password,
+                        redirect: true,
+                        callbackUrl: '/'
+                    });
+                    return "Usuario registrado correctamente!!"
+                },
+                error: (error) => {
+                    return error
+                },
+            });
+            setLoading(false)
         }
     })
 
@@ -64,6 +58,7 @@ const RegisterForm = () => {
                     placeholder="Escriba su email"
                     value={formik.values.email}
                     onChange={formik.handleChange}
+                    required
                     error={formik.errors.email}
                 />
             </div>
@@ -73,6 +68,7 @@ const RegisterForm = () => {
                     <input
                         name="firstname"
                         type="text"
+                        required
                         placeholder="Nombre"
                         value={formik.values.firstname}
                         onChange={formik.handleChange}
@@ -84,6 +80,7 @@ const RegisterForm = () => {
                     <input
                         name="lastname"
                         type="text"
+                        required
                         placeholder="Apellido"
                         value={formik.values.lastname}
                         onChange={formik.handleChange}
@@ -97,13 +94,14 @@ const RegisterForm = () => {
                 <input
                     name="password"
                     type="password"
+                    required
                     placeholder="Contraseña"
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     error={formik.errors.password}
                 />
             </div>
-            <button type="submit" disabled={loading} >{loading ? <Loader /> : "Crear"}</button>
+            <button type="submit" disabled={loading} >Crear</button>
         </form>
     )
 }

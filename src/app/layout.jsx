@@ -1,6 +1,7 @@
 import { Poppins } from 'next/font/google'
 import '@/styles/global.scss'
 import { AuthProvider } from './Providers'
+import { Toaster } from 'sonner';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           {children}
         </AuthProvider>
+        <Toaster theme='dark' position='top-right' visibleToasts={4} dir='auto' richColors />
       </body>
     </html>
   )
