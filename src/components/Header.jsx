@@ -5,10 +5,12 @@ const Header = async () => {
 
     return (
         <div className={styles.header}>
-            <header>
-                <span>Finaz<strong>App</strong></span>
-                <UserButton />
-            </header>
+            <div className={styles.headerContainer}>
+                <header>
+                    <span>Finaz<strong>App</strong></span>
+                    <UserButton />
+                </header>
+            </div>
         </div>
     )
 }

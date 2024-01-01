@@ -1,8 +1,52 @@
-import React from 'react'
+import styles from '@/styles/components/footer.module.scss'
+import Link from 'next/link'
+import { IconChart, IconGoal, IconList, IconSettings } from './shared/Icons'
 
 const Footer = () => {
     return (
-        <div>Footer</div>
+        <footer className={styles.footer}>
+            <nav>
+                <ul>
+                    <li>
+                        <Link href="/panel">
+                            <IconList className={styles.iconList} />
+                            <span>
+                                Transacciones
+                            </span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/panel">
+                            <IconChart className={styles.iconChart} />
+                            <span>
+                                Informes
+                            </span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/panel">
+                            <IconGoal />
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/panel">
+                            <IconGoal className={styles.iconGoal} />
+                            <span>
+                                Plan
+                            </span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/panel">
+                            <IconSettings />
+                            <span>
+                                Configuración
+                            </span>
+                        </Link>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
     )
 }
 

@@ -1,0 +1,97 @@
+@import '../index.scss';
+
+.footer {
+    width: 100%;
+    border-top: 1px solid $color-8;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 2rem;
+    padding-bottom: 4rem;
+    background-color: $color-6;
+
+    box-shadow: 0px -4px 4px 0px #0000009c;
+
+    nav {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        overflow-x: hidden;
+
+        ul {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+
+            li {
+                a {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    font-size: .9rem;
+                    gap: .8rem;
+                    text-decoration: none;
+
+                    &:hover {
+                        svg {
+                            stroke: $color-4;
+
+                            &.iconChart {
+                                path {
+                                    fill: $color-4;
+                                }
+                            }
+
+                            &.iconGoal {
+                                path {
+                                    stroke: $color-4;
+                                }
+                            }
+                        }
+
+                        span {
+                            color: $color-4;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    .iconList {
+        stroke-width: 3;
+        width: 39px;
+        height: 39px;
+    }
+
+    @media (min-width: 700px) {
+        nav {
+            ul {
+                li {
+                    a {
+                        flex-direction: row;
+                        gap: 1.4rem;
+                        font-size: 1.4rem;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+
+    }
+
+    @media (max-width: 360px) {
+        nav {
+            ul {
+                li {
+                    a {
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

@@ -4,21 +4,40 @@
     width: 100%;
     height: 60px;
 
-    >header {
-        padding: 1.5rem 2rem;
+    .headerContainer {
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid $color-8;
-        box-shadow: 0px 4px 4px 0px $color-2;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: $color-7;
 
-        >span {
-            font-size: 1.6rem;
+        header {
+            padding: 1.5rem 2rem;
+            width: 100%;
+            margin: auto;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid $color-8;
+            box-shadow: 0px 4px 4px 0px $color-2;
 
-            >strong {
-                font-weight: 600;
-                color: $color-4;
+            >span {
+                font-size: 1.6rem;
+
+                >strong {
+                    font-weight: 600;
+                    color: $color-4;
+                }
+            }
+        }
+    }
+
+
+    @media (min-width: 700px) {
+        header {
+            >span {
+                font-size: 2rem;
             }
         }
     }

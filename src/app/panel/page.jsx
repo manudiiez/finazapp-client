@@ -2,7 +2,7 @@ import React from 'react'
 
 const Panel = () => {
     return (
-        <div>Panel</div>
+        <div style={{ height: "200vh" }}>Panel</div>
     )
 }
 
