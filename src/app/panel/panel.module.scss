@@ -8,4 +8,14 @@
         max-width: 1200px;
         margin: auto;
     }
+
+    @media (min-width: 700px) {
+        padding: 8rem 2rem;
+    }
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
 }

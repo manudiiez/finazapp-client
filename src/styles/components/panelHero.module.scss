@@ -1,0 +1,32 @@
+@import '../index.scss';
+
+.hero {
+    p {
+        font-size: 2.5rem;
+        font-weight: 600;
+
+        span {
+            display: none;
+        }
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        font-weight: 300;
+    }
+
+    @media (min-width: 700px) {
+        p {
+            font-size: 3rem;
+
+            span {
+                display: inline;
+            }
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+
+    }
+}

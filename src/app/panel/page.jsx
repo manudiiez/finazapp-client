@@ -1,8 +1,25 @@
-import React from 'react'
+import PanelHero from '@/components/PanelHero'
+import BalanceContainer from '@/components/balance/BalanceContainer'
+import styles from './panel.module.scss'
+import { formatearFecha } from '@/utils/func'
 
-const Panel = () => {
+const Panel = ({ searchParams }) => {
+    const { startDate = false, endDate = false } = searchParams
+    let formatStartDate = startDate
+    let formatEndDate = endDate
+    if (!formatStartDate || !formatEndDate) {
+        formatStartDate = formatearFecha(new Date())
+        formatEndDate = formatearFecha(new Date())
+    }
     return (
-        <div>Panel</div>
+        <div className={styles.home}>
+            <section>
+                <PanelHero />
+            </section>
+            <section>
+                <BalanceContainer startDate={formatStartDate} endDate={formatEndDate} />
+            </section>
+        </div >
     )
 }
 

@@ -37,7 +37,7 @@ const Footer = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/panel">
+                        <Link href="/panel/settings">
                             <IconSettings />
                             <span>
                                 Configuración
