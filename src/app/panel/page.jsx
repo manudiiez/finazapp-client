@@ -2,6 +2,7 @@ import PanelHero from '@/components/PanelHero'
 import BalanceContainer from '@/components/balance/BalanceContainer'
 import styles from './panel.module.scss'
 import { formatearFecha } from '@/utils/func'
+import TransactionsContainer from '@/components/transactions/TransactionsContainer'
 
 const Panel = ({ searchParams }) => {
     const { startDate = false, endDate = false } = searchParams
@@ -18,6 +19,9 @@ const Panel = ({ searchParams }) => {
             </section>
             <section>
                 <BalanceContainer startDate={formatStartDate} endDate={formatEndDate} />
+            </section>
+            <section>
+                <TransactionsContainer />
             </section>
         </div >
     )
