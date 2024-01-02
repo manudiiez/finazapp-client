@@ -15,7 +15,7 @@ const TransactionsContainer = async () => {
             <ul>
                 {
                     transactions.map(data => (
-                        <TransactionsItem data={data} />
+                        <TransactionsItem data={data} key={data.fecha} />
                     ))
                 }
             </ul>

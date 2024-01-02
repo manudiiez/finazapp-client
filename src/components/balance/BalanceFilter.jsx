@@ -10,7 +10,7 @@ const BalanceFilter = () => {
             <ul>
                 {
                     data.map((item) => (
-                        <li>
+                        <li key={item.name}>
                             <Link href={`/panel?startDate=${item.startDate}&endDate=${item.endDate}`}>{item.name}</Link>
                         </li>
                     ))

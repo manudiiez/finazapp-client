@@ -9,8 +9,8 @@ const TransactionsItem = ({ data }) => {
             <ul>
                 {
                     data.transactions.map(item => (
-                        <li>
-                            <Link href="/panel">
+                        <li key={item._id}>
+                            <Link href={`/panel/${item._id}`}>
                                 <div>
                                     <p>{item.category.name}</p>
                                 </div>
