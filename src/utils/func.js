@@ -1,3 +1,5 @@
+import { DateTime } from "luxon";
+
 export function obtenerRangosFechas() {
     const hoy = new Date();
     const ayer = new Date(hoy);
@@ -69,4 +71,17 @@ export function formatearFecha(fecha) {
     const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
     const year = fecha.getFullYear();
     return `${year}-${mes}-${dia}`;
+}
+
+
+export function convertirFormatoFecha(fechaString) {
+    const fecha = DateTime.fromISO(fechaString, { locale: 'es' });
+    const diaSemana = fecha.toFormat('EEEE'); // 'EEEE' devuelve el nombre completo del día de la semana
+    const diaMes = fecha.day;
+    const nombreMes = fecha.toLocaleString({ month: 'long' });
+    const diaSemanaCapitalizado = diaSemana.replace(/^\w/, (c) => c.toUpperCase());
+    const nombreMesCapitalizado = nombreMes.replace(/^\w/, (c) => c.toUpperCase());
+    const fechaFormateada = `${diaSemanaCapitalizado}, ${diaMes} de ${nombreMesCapitalizado} ${fecha.year}`;
+
+    return fechaFormateada;
 }
