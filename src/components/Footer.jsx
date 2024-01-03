@@ -24,7 +24,7 @@ const Footer = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/panel">
+                        <Link href="/panel/new">
                             <IconGoal />
                         </Link>
                     </li>

@@ -1,11 +1,12 @@
 import Footer from "@/components/Footer"
 import styles from './panel.module.scss'
-const layout = ({ children }) => {
+const layout = (props) => {
     return (
         <div className={styles.container}>
             <main>
-                {children}
+                {props.children}
             </main>
+            {props.modal}
             <Footer />
         </div>
     )

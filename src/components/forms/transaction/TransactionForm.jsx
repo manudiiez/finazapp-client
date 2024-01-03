@@ -3,7 +3,13 @@
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './TransactionForm.form';
 import styles from '../forms.module.scss'
+import { useState } from 'react';
+import CategoryInput from '@/components/categoryInput';
 const TransactionForm = () => {
+
+    const [category, setCategory] = useState(null);
+    const [type, setType] = useState(null);
+
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: validationSchema(),
@@ -17,13 +23,18 @@ const TransactionForm = () => {
         }
     })
 
+    const handleChange = (e) => {
+        formik.handleChange(e)
+        setType(e.target.value)
+    }
+
     return (
         <div className={styles.transactionForm}>
             <form onSubmit={formik.handleSubmit}>
                 <div className={styles.labels}>
                     <input type="radio" id="option1" name="type"
                         value="income"
-                        onChange={formik.handleChange}
+                        onChange={handleChange}
                     />
                     <label htmlFor="option1">Ingreso</label>
 
@@ -35,7 +46,7 @@ const TransactionForm = () => {
                 </div>
                 <div className={styles.inputGroup}>
                     <label htmlFor="amount">Monto</label>
-                    <input type="number" name='amount' placeholder='$0'
+                    <input type="number" name='amount' id='amount' placeholder='$0'
                         value={formik.values.amount}
                         onChange={formik.handleChange}
                     />
@@ -44,11 +55,12 @@ const TransactionForm = () => {
                     <div className={styles.inputGroup}>
 
                         <label htmlFor="category">Categoria</label>
-                        <input type="text" name='category' placeholder='Sin categoria'
+                        {/* <input type="text" name='category' placeholder='Sin categoria'
                             value={formik.values.category}
                             required
                             onChange={formik.handleChange}
-                        />
+                        /> */}
+                        <CategoryInput category={category} setCategory={setCategory} type={type} />
                     </div>
                 </div>
                 <div>
@@ -65,7 +77,7 @@ const TransactionForm = () => {
                 </div>
                 <div className={styles.inputGroup}>
                     <label htmlFor="note">Nota</label>
-                    <input type="text" name='note' placeholder='-'
+                    <input type="text" name='note' id='note' placeholder='-'
                         value={formik.values.note}
                         onChange={formik.handleChange}
                     />

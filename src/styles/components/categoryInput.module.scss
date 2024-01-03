@@ -1,0 +1,71 @@
+@import '../index.scss';
+
+
+.container {
+    .inputGroup {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $color-8;
+        padding: .6rem;
+
+        label {
+            font-size: 1.2rem;
+            color: $color-3;
+        }
+
+        input {
+            background-color: transparent;
+            border: none;
+            text-align: end;
+        }
+    }
+
+    .list {
+        display: flex;
+        flex-direction: column;
+
+        >li {
+            display: grid;
+            grid-template-columns: 1fr 30px;
+            border-bottom: 1px solid $color-8;
+
+            button {
+                font-size: 1.2rem;
+                background-color: transparent;
+                border: none;
+                padding: .6rem;
+                display: flex;
+                align-items: center;
+            }
+
+            &:hover {
+                background-color: $color-6;
+            }
+
+            &:first-of-type {
+                grid-template-columns: 1fr;
+
+                button {
+                    justify-content: space-between;
+                    color: $color-4;
+
+                    svg {
+                        stroke: $color-4;
+                    }
+                }
+
+                &:hover {
+                    background-color: $color-6;
+
+                    button {
+                        color: $color-1;
+
+                        svg {
+                            stroke: $color-1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
