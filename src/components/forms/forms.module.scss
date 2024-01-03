@@ -56,3 +56,67 @@
         }
     }
 }
+
+
+.transactionForm {
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        .inputGroup {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid $color-8;
+            padding: .6rem;
+
+            label {
+                font-size: 1.2rem;
+                color: $color-3;
+            }
+
+            input {
+                background-color: transparent;
+                border: none;
+                text-align: end;
+            }
+        }
+
+        .labels {
+            background-color: $color-6;
+            width: fit-content;
+            display: flex;
+            margin: auto;
+            margin-bottom: 2rem;
+            padding: 0;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            font-size: 1.2rem;
+
+            input[type='radio'] {
+                display: none;
+            }
+
+            label {
+                padding: .6rem 2rem;
+                color: $color-1;
+            }
+
+            input[type='radio']:checked+label {
+                background-color: $color-4;
+                border-color: $color-4;
+            }
+
+        }
+
+        .button {
+            background-color: $color-4;
+            margin-top: 2rem;
+            border: none;
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            border-radius: 1rem;
+        }
+
+    }
+}
