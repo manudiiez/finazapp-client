@@ -72,7 +72,16 @@
         a {
             background-color: $color-4;
             border-radius: 50%;
-            padding: 1rem;
+            padding: .6rem;
+
+            &:hover {
+                background-color: $color-5;
+
+                svg {
+                    stroke: $color-1 ;
+                }
+            }
+
         }
     }
 
