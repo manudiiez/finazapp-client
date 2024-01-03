@@ -1,6 +1,6 @@
 import styles from '@/styles/components/footer.module.scss'
 import Link from 'next/link'
-import { IconChart, IconGoal, IconList, IconSettings } from './shared/Icons'
+import { IconChart, IconGoal, IconList, IconPlus, IconSettings } from './shared/Icons'
 
 const Footer = () => {
     return (
@@ -23,9 +23,9 @@ const Footer = () => {
                             </span>
                         </Link>
                     </li>
-                    <li>
+                    <li className={styles.iconPlus}>
                         <Link href="/panel/new">
-                            <IconGoal />
+                            <IconPlus />
                         </Link>
                     </li>
                     <li>

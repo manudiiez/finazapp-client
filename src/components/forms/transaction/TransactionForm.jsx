@@ -1,8 +1,6 @@
-
 "use client"
 import { useState } from "react"
 const TransactionForm = () => {
-    const [type, setType] = useState(false);
     return (
         <div>
             <form>
