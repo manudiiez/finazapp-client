@@ -19,6 +19,7 @@ const TransactionsContainer = async () => {
                     ))
                 }
             </ul>
+
         </div>
     )
 }

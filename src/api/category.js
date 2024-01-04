@@ -1,25 +1,7 @@
-export class Transaction {
-    getResume = async (startDate, endDate, token) => {
-        try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION_RESUME}?startDate=${startDate}&endDate=${endDate}`
-            const response = await fetch(url, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "token": `${token}`,
-                }
-            });
-            const result = await response.json()
-            if (response.status !== 200) throw result
-            return result
-        } catch (error) {
-            throw error
-        }
-    }
-
+export class Category {
     getAll = async (token) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_CATEGORY}`
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
@@ -37,8 +19,7 @@ export class Transaction {
 
     save = async (body, token) => {
         try {
-            body.date = new Date(body.date)
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_CATEGORY}`
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -49,6 +30,24 @@ export class Transaction {
             });
             const result = await response.json()
             if (response.status !== 201) throw result
+            return result
+        } catch (error) {
+            throw error
+        }
+    }
+
+    delete = async (id, token) => {
+        try {
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_CATEGORY}/${id}`
+            const response = await fetch(url, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "token": `${token}`,
+                }
+            });
+            const result = await response.json()
+            if (response.status !== 200) throw result
             return result
         } catch (error) {
             throw error

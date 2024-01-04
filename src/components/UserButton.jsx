@@ -2,17 +2,33 @@
 import Link from "next/link"
 import { IconLogout, IconUser } from "./shared/Icons"
 import { signOut, useSession } from "next-auth/react"
-import { toast } from 'sonner';
 import styles from '@/styles/components/userButton.module.scss'
+import Swal from "sweetalert2";
 const UserButton = () => {
 
     const logout = async () => {
-        toast('¿Estas seguro?', {
-            action: {
-                label: 'Cerrar',
-                onClick: () => signOut({ callbackUrl: '/join/login' }),
-            },
-            duration: 3000
+        Swal.fire({
+            title: "Cerrar sesion?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Cerrar",
+            denyButtonText: `Cancelar`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "Cerrando sesion!!"
+                }).then(() => {
+                    signOut({ callbackUrl: '/join/login' })
+                })
+            }
         });
     }
     const { session: data, status } = useSession()

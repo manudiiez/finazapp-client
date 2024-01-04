@@ -1,15 +1,19 @@
 import * as Yup from 'yup'
 
-export const initialValues = () => {
+export const initialValues = (type) => {
     return {
-        email: "",
-        password: ""
+        note: "",
+        amount: "",
+        type,
+        date: "",
     }
 }
 
 export const validationSchema = () => {
     return Yup.object({
-        email: Yup.string().required(true),
-        password: Yup.string().required(true),
+        note: Yup.string(),
+        amount: Yup.number().required(true),
+        type: Yup.string().required(true),
+        date: Yup.string().required(true),
     })
 }

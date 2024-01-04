@@ -4,7 +4,6 @@ import { initialValues, validationSchema } from './LoginForm.form';
 import styles from '../forms.module.scss'
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
-import { toast } from 'sonner';
 
 const LoginForm = () => {
     const [loading, setLoading] = useState(false);
@@ -23,7 +22,7 @@ const LoginForm = () => {
                 });
                 setLoading(false)
             } catch (error) {
-                toast.error(error)
+                console.log(error)
             }
         }
     })
