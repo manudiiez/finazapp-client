@@ -10,7 +10,7 @@ const UserButton = () => {
         Swal.fire({
             title: "Cerrar sesion?",
             showDenyButton: true,
-            showCancelButton: true,
+            showCancelButton: false,
             confirmButtonText: "Cerrar",
             denyButtonText: `Cancelar`
         }).then((result) => {

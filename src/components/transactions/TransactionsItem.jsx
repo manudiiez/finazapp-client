@@ -2,7 +2,7 @@ import styles from '@/styles/components/panelTransactions.module.scss'
 import { convertirFormatoFecha } from '@/utils/func';
 import classNames from 'classnames';
 import Link from 'next/link';
-const TransactionsItem = ({ data }) => {
+const TransactionsItem = ({ data, openModal }) => {
     return (
         <li className={styles.transactionsDay}>
             <p>{convertirFormatoFecha(data.fecha)}</p>
@@ -10,12 +10,12 @@ const TransactionsItem = ({ data }) => {
                 {
                     data.transactions.map(item => (
                         <li key={item._id}>
-                            <Link href={`/panel/${item._id}`}>
+                            <button onClick={() => openModal(item)}>
                                 <div>
                                     <p>{item.category.name}</p>
                                 </div>
                                 <p className={classNames(styles.amount, { [styles.amountBill]: item.type === 'bill' })}>{item.type === 'bill' ? '-' : '+'}${item.amount}</p>
-                            </Link>
+                            </button>
                         </li>
                     ))
                 }

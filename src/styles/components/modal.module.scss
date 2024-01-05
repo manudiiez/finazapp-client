@@ -52,6 +52,8 @@
             animation: bgAppear .5s ease;
         }
     }
+
+    @media (min-width: 700px) {}
 }
 
 @keyframes appear {

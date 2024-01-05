@@ -65,13 +65,13 @@
         flex-direction: column;
         max-width: 600px;
         margin: auto;
-        padding: 10rem 0;
 
         .inputGroup {
             display: grid;
             grid-template-columns: 1fr 1fr;
             border-bottom: 1px solid $color-8;
             padding: .6rem;
+            cursor: pointer;
 
             label {
                 font-size: 1.2rem;
@@ -115,15 +115,23 @@
 
         }
 
-        .button {
-            background-color: $color-4;
-            margin-top: 2rem;
-            border: none;
-            padding: 1.5rem;
-            font-size: 1.2rem;
-            border-radius: 1rem;
-        }
 
+    }
+
+    .button,
+    .button2 {
+        background-color: $color-4;
+        margin-top: 2rem;
+        border: none;
+        padding: 1.5rem;
+        font-size: 1.2rem;
+        border-radius: 1rem;
+    }
+
+    .button2 {
+        width: 100%;
+        background-color: $color-error;
+        max-width: 600px;
     }
 
     .categoryList {
@@ -173,5 +181,34 @@
         }
 
 
+    }
+
+
+    @media (min-width: 700px) {
+        form {
+            .inputGroup {
+                padding: 1rem;
+
+                label {
+                    font-size: 1.4rem;
+                }
+
+                input,
+                span {
+                    font-size: 1.4rem;
+                }
+            }
+
+            .labels {
+                margin-bottom: 3rem;
+            }
+        }
+    }
+
+    .button,
+    .button2 {
+        margin-top: 3rem;
+        font-size: 1.4rem;
+        font-weight: 600;
     }
 }

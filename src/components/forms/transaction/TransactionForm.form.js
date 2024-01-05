@@ -1,11 +1,11 @@
 import * as Yup from 'yup'
 
-export const initialValues = (type) => {
+export const initialValues = (type, amount, date, note) => {
     return {
-        note: "",
-        amount: "",
+        note,
+        amount,
         type,
-        date: "",
+        date,
     }
 }
 
