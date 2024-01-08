@@ -16,7 +16,7 @@ const Footer = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/panel">
+                        <Link href="/panel/charts">
                             <IconChart className={styles.iconChart} />
                             <span>
                                 Informes

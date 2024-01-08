@@ -1,7 +1,6 @@
 import styles from '@/styles/components/panelTransactions.module.scss'
 import { convertirFormatoFecha } from '@/utils/func';
 import classNames from 'classnames';
-import Link from 'next/link';
 const TransactionsItem = ({ data, openModal }) => {
     return (
         <li className={styles.transactionsDay}>
