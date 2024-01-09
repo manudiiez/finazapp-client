@@ -31,6 +31,18 @@
         border-bottom: 1px solid $color-8;
     }
 
+    .categoryColor {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        >div {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+        }
+    }
+
     >ul {
         display: flex;
         flex-direction: column;

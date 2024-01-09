@@ -10,7 +10,8 @@ const TransactionsItem = ({ data, openModal }) => {
                     data.transactions.map(item => (
                         <li key={item._id}>
                             <button onClick={() => openModal(item)}>
-                                <div>
+                                <div className={styles.categoryColor}>
+                                    <div style={{ backgroundColor: item.category.color }}></div>
                                     <p>{item.category.name}</p>
                                 </div>
                                 <p className={classNames(styles.amount, { [styles.amountBill]: item.type === 'bill' })}>{item.type === 'bill' ? '-' : '+'}${item.amount}</p>

@@ -78,7 +78,6 @@ const BarChartComponent = ({ data, categories }) => {
                     <XAxis dataKey="name" />
                     <YAxis />
                     <Tooltip content={<CustomTooltip />} />
-                    <Legend />
                     {
                         categories.map(item => (
                             <Bar dataKey={item.name} stackId="a" fill={item.color} key={item.name} />

@@ -8,7 +8,8 @@ const DataList = ({ data }) => {
                     data.map(item => (
                         <li key={item.name}>
                             <div>
-                                <p>{item.name}</p>
+                                <div style={{ backgroundColor: item.color }}></div>
+                                <p style={{ color: item.color }}>{item.name}</p>
                             </div>
                             <p className={classNames(styles.amount, {
                                 [styles.bill]: item.type === 'bill'

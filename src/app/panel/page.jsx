@@ -4,7 +4,7 @@ import styles from './panel.module.scss'
 import { formatearFecha } from '@/utils/func'
 import TransactionsContainer from '@/components/transactions/TransactionsContainer'
 
-const Panel = ({ searchParams }) => {
+const Panel = async ({ searchParams }) => {
     const { startDate = false, endDate = false } = searchParams
     let formatStartDate = startDate
     let formatEndDate = endDate

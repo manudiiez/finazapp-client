@@ -14,7 +14,13 @@ const TransactionsContainer = async () => {
     const categories = await categoryCtrl.getAll(session.token)
     return (
         <div className={styles.container}>
-            <Transactions data={transactions} categories={categories} user={session} />
+            {
+                transactions.length === 0 ? (
+                    <p>No hay transacciones</p>
+                ) : (
+                    <Transactions data={transactions} categories={categories} user={session} />
+                )
+            }
         </div>
     )
 }

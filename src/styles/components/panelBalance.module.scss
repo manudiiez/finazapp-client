@@ -46,6 +46,25 @@
     }
 }
 
+.container {
+    .content {
+        .chart {
+            display: none;
+        }
+
+        @media (min-width: 700px) {
+            display: grid;
+            grid-template-columns: 1fr 580px;
+            gap: 2rem;
+
+            .chart {
+                display: block;
+                height: 250px;
+            }
+        }
+    }
+}
+
 .filter {
     width: 100%;
     padding-bottom: .8rem;

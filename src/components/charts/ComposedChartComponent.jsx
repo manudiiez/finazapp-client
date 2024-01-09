@@ -89,7 +89,6 @@ const ComposedChartComponent = ({ data }) => {
                         fill="url(#splitColor)"
                     />
                     <Tooltip content={<CustomTooltip />} />
-                    <Legend />
                 </ComposedChart>
             </ResponsiveContainer>
         </div>
@@ -98,7 +97,6 @@ const ComposedChartComponent = ({ data }) => {
 
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
-        console.log(payload);
         return (
             <div className={styles.tooltip}>
                 <p>{label}</p>

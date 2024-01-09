@@ -2,12 +2,6 @@
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer, Legend } from 'recharts';
 import styles from './charts.module.scss'
 
-const response = [
-    { name: 'Salario', value: 2000, color: '#0088FE' },
-    { name: 'Freelance', value: 5000, color: '#00C49F' },
-    { name: 'Inmuebles', value: 1000, color: '#FFBB28' },
-];
-
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.3;
@@ -23,8 +17,9 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
 
 const PieChartComponent = ({ categories }) => {
+    const allZero = categories.every(transaction => transaction.value === 0);
 
-    if (categories.length === 0) {
+    if (categories.length === 0 || allZero) {
         return (
             <div className={styles.container}>
                 <div className={styles.message}>
@@ -55,8 +50,6 @@ const PieChartComponent = ({ categories }) => {
                         ))}
                     </Pie>
                     <Tooltip content={<CustomTooltip />} />
-                    <Legend />
-
                 </PieChart>
             </ResponsiveContainer>
         </div>

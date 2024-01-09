@@ -107,36 +107,31 @@ const TransactionForm = ({ categories, initialValues, mode = "create", session, 
     };
 
 
-    const createCategory = () => {
-        Swal.fire({
-            title: "Nombre de la categoria",
-            input: "text",
-            inputAttributes: {
-                autocapitalize: "off"
-            },
-            showCancelButton: false,
-            confirmButtonText: "Crear",
-            showDenyButton: true,
-            denyButtonText: "Cancelar",
-            showLoaderOnConfirm: true,
-            preConfirm: async (name) => {
-                try {
-                    const response = await categoryCtrl.save({
-                        name: name,
-                        type: values.type,
-                        user: session.user.id
-                    },
-                        session.token)
-                    return response
-                } catch (error) {
-                    Swal.showValidationMessage(`
-                  Error: ${error}
-                `);
-                }
-            },
-            allowOutsideClick: () => !Swal.isLoading()
-        }).then((result) => {
-            if (result.isConfirmed) {
+    const createCategory = async () => {
+        const { value: formValues } = await Swal.fire({
+            title: "Crear categoria",
+            html: `
+              <input id="swal-input1" class="swal2-input">
+              <input id="swal-input2" class="swal2-input swal2-input-color" type="color" >
+            `,
+            focusConfirm: false,
+            preConfirm: () => {
+                return [
+                    document.getElementById("swal-input1").value,
+                    document.getElementById("swal-input2").value
+                ];
+            }
+        });
+        if (formValues && formValues[0] !== "" && formValues[1] != "#000000") {
+            Swal.fire(JSON.stringify(formValues));
+            try {
+                const response = await categoryCtrl.save({
+                    name: formValues[0],
+                    type: values.type,
+                    user: session.user.id,
+                    color: formValues[1]
+                },
+                    session.token)
                 const Toast = Swal.mixin({
                     toast: true,
                     position: "top-end",
@@ -150,15 +145,34 @@ const TransactionForm = ({ categories, initialValues, mode = "create", session, 
                 });
                 Toast.fire({
                     icon: "success",
-                    title: `Categoria ${result.value.name} creada!!`
+                    title: `Categoria ${response.name} creada!!`
                 })
                 const list = categoriesData[values.type]
-                list.list.push(result.value)
+                list.list.push(response)
                 setCategoriesData({ ...categoriesData, [values.type]: list })
+            } catch (error) {
+                Swal.showValidationMessage(`
+                          Error: ${error}
+                        `);
             }
-        });
+        } else {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "warning",
+                title: `Complete los datos!!`
+            })
+        }
     }
-
     const deleteCategory = (id, name) => {
         Swal.fire({
             title: `Eliminar ${name}`,
@@ -246,7 +260,7 @@ const TransactionForm = ({ categories, initialValues, mode = "create", session, 
                 </div>
                 <div className={styles.inputGroup} onClick={() => setCategoriesModalShow(true)}>
                     <label htmlFor="category">Categoria</label>
-                    <span>{values?.category.name}</span>
+                    <span>{values?.category?.name || 'no hay categorias'}</span>
                 </div>
                 <div className={styles.inputGroup}>
                     <label htmlFor="date">Fecha</label>
@@ -302,6 +316,7 @@ const TransactionForm = ({ categories, initialValues, mode = "create", session, 
                                     })
                                     setCategoriesModalShow(false)
                                 }}>
+                                    <div className={styles.categoryColor} style={{ backgroundColor: item.color }}></div>
                                     {item.name}
                                 </button>
                                 {
