@@ -1,0 +1,89 @@
+@import '../index.scss';
+
+.container {
+    padding: 2rem;
+    background-color: $color-6;
+    border-radius: 2rem;
+    display: flex;
+    gap: 1rem;
+    box-shadow: 0px 6px 4px 0px #000;
+
+    &.other {
+        box-shadow: none;
+        border-bottom: 1px solid $color-8;
+        border-radius: 0;
+        padding: .6rem .3rem;
+    }
+
+    .color {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+
+        .info {
+            >div {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                p {
+                    font-size: 1.3rem;
+                }
+
+                span {
+                    font-size: 1.3rem;
+                    color: $color-4;
+                    font-weight: 500;
+                }
+
+                &:nth-of-type(2) {
+                    span {
+                        font-size: 1.1rem;
+                        font-weight: 400;
+
+                        &:nth-of-type(2) {
+                            color: $color-1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.progressBar {
+    border-radius: 2.5rem;
+    overflow: hidden;
+}
+
+.barContainer {
+    height: .8rem;
+    background-color: $color-7;
+
+    >div {
+        background-color: $color-4 !important;
+    }
+}
+
+
+.label {
+    display: none;
+}
+
+.date {
+    width: 100%;
+    text-align: end;
+    font-size: 1.2rem;
+    color: $color-3;
+
+    &::first-letter {
+        text-transform: capitalize;
+    }
+}

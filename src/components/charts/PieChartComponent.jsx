@@ -1,6 +1,7 @@
 "use client"
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer, Legend } from 'recharts';
 import styles from './charts.module.scss'
+import Message from '../shared/Message';
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
@@ -22,9 +23,8 @@ const PieChartComponent = ({ categories }) => {
     if (categories.length === 0 || allZero) {
         return (
             <div className={styles.container}>
-                <div className={styles.message}>
-                    No hay datos
-                </div>
+                <Message text="No hay datos" />
+
             </div>
         );
     }

@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import styles from '@/styles/components/panelTransactions.module.scss'
 import Transactions from "./Transactions";
 import { Category } from "@/api/category";
+import Message from "../shared/Message";
 
 const TransactionsContainer = async () => {
 
@@ -16,7 +17,7 @@ const TransactionsContainer = async () => {
         <div className={styles.container}>
             {
                 transactions.length === 0 ? (
-                    <p>No hay transacciones</p>
+                    <Message text="No hay transacciones" height={100} />
                 ) : (
                     <Transactions data={transactions} categories={categories} user={session} />
                 )

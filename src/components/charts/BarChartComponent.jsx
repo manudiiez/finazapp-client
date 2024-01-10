@@ -1,6 +1,7 @@
 "use client"
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import styles from './charts.module.scss'
+import Message from '../shared/Message';
 const response = {
     attributes: [
         {
@@ -64,9 +65,7 @@ const BarChartComponent = ({ data, categories }) => {
     if (data.length === 0) {
         return (
             <div className={styles.container}>
-                <div className={styles.message}>
-                    No hay datos
-                </div>
+                <Message text="No hay datos" height={100} />
             </div>
         );
     }

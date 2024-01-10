@@ -29,7 +29,7 @@ const Footer = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/panel">
+                        <Link href="/panel/goals">
                             <IconGoal className={styles.iconGoal} />
                             <span>
                                 Plan

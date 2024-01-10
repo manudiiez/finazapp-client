@@ -219,3 +219,64 @@
         font-weight: 600;
     }
 }
+
+.goalForm {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+
+    form {
+        input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid $color-8;
+            padding: .6rem .3rem;
+            height: 40px;
+        }
+
+        div {
+            display: grid;
+            height: 40px;
+            grid-template-columns: 1fr 50px;
+            width: 100%;
+            align-items: center;
+            padding: .6rem .3rem;
+            border-bottom: 1px solid $color-8;
+
+            &:nth-of-type(2) {
+                grid-template-columns: 1fr 130px;
+
+                input {
+                    width: 130px;
+                }
+            }
+
+            label {
+                color: $color-3;
+                font-size: 1.2rem;
+            }
+
+            input {
+                height: 100%;
+                font-size: 1.2rem;
+                padding: 0;
+                width: 50px;
+                border-bottom: none;
+            }
+        }
+
+        button {
+            width: 100%;
+            height: 40px;
+            background-color: $color-4;
+            border-radius: .6rem;
+            border: none;
+            margin-top: 2rem;
+
+            &:nth-of-type(2) {
+                background-color: $color-error;
+            }
+        }
+    }
+}

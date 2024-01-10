@@ -3,6 +3,7 @@ import BalanceContainer from '@/components/balance/BalanceContainer'
 import styles from './panel.module.scss'
 import { formatearFecha } from '@/utils/func'
 import TransactionsContainer from '@/components/transactions/TransactionsContainer'
+import GoalContainer from '@/components/transactions/GoalContainer'
 
 const Panel = async ({ searchParams }) => {
     const { startDate = false, endDate = false } = searchParams
@@ -20,8 +21,11 @@ const Panel = async ({ searchParams }) => {
             <section>
                 <BalanceContainer startDate={formatStartDate} endDate={formatEndDate} />
             </section>
-            <section>
+            <section className={styles.section}>
                 <TransactionsContainer />
+                <div className={styles.goal}>
+                    <GoalContainer />
+                </div>
             </section>
         </div >
     )

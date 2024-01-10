@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ramonak/react-progress-bar": "^5.2.0",
     "classnames": "^2.5.1",
     "formik": "^2.4.5",
     "luxon": "^3.4.4",
