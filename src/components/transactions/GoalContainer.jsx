@@ -8,7 +8,6 @@ const GoalContainer = async () => {
     const goalCtrl = new Goal()
     const session = await getServerSession(authOptions);
     const response = await goalCtrl.getAll(session.token)
-
     return (
         <div>
             {
@@ -18,7 +17,7 @@ const GoalContainer = async () => {
                     <ul>
                         {
                             response.map(item => (
-                                <GoalItem data={item} mode={true} />
+                                <GoalItem data={item} mode={true} key={item._id} />
                             ))
                         }
                     </ul>
