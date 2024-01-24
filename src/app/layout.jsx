@@ -1,7 +1,7 @@
 import { Poppins } from 'next/font/google'
 import '@/styles/global.scss'
 import { AuthProvider } from './Providers'
-import Header from '@/components/header';
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import styles from './panel.module.scss'
 import { getServerSession } from 'next-auth';
