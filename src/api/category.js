@@ -1,7 +1,9 @@
+import { API_URI } from "@/utils/config.js";
+
 export class Category {
     getAll = async (token) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_CATEGORY}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_CATEGORY}`
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
@@ -19,7 +21,7 @@ export class Category {
 
     save = async (body, token) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_CATEGORY}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_CATEGORY}`
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -38,7 +40,7 @@ export class Category {
 
     delete = async (id, token) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_CATEGORY}/${id}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_CATEGORY}/${id}`
             const response = await fetch(url, {
                 method: "DELETE",
                 headers: {

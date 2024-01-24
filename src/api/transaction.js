@@ -1,7 +1,9 @@
+import { API_URI } from "@/utils/config.js";
+
 export class Transaction {
     getResume = async (startDate, endDate, token) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION_RESUME}?startDate=${startDate}&endDate=${endDate}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION_RESUME}?startDate=${startDate}&endDate=${endDate}`
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
@@ -19,7 +21,7 @@ export class Transaction {
 
     getCharts = async (type, year, token) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION_CHARTS}?type=${type}&year=${year}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION_CHARTS}?type=${type}&year=${year}`
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
@@ -37,7 +39,7 @@ export class Transaction {
 
     getAll = async (token) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION}`
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
@@ -56,7 +58,7 @@ export class Transaction {
     save = async (body, token) => {
         try {
             body.date = new Date(body.date)
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION}`
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -76,7 +78,7 @@ export class Transaction {
     update = async (body, token, id) => {
         try {
             body.date = new Date(body.date)
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION}/${id}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION}/${id}`
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {
@@ -95,7 +97,7 @@ export class Transaction {
 
     delete = async (token, id) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION}/${id}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_TRANSACTION}/${id}`
             const response = await fetch(url, {
                 method: "DELETE",
                 headers: {

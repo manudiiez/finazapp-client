@@ -1,3 +1,4 @@
+import { API_URI } from "@/utils/config.js";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -10,7 +11,7 @@ export const authOptions = {
             async authorize(credentials) {
                 const { email, password } = credentials;
                 try {
-                    const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_AUTH_LOGIN}`
+                    const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_AUTH_LOGIN}`
                     const response = await fetch(url, {
                         method: "POST",
                         headers: {

@@ -1,7 +1,9 @@
+import { API_URI } from "@/utils/config.js";
+
 export class User {
     register = async (data) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_AUTH_REGISTER}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_AUTH_REGISTER}`
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -19,7 +21,7 @@ export class User {
 
     update = async (body, token) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_AUTH_UPDATE}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_AUTH_UPDATE}`
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {
@@ -30,7 +32,6 @@ export class User {
             });
             const result = await response.json()
             if (response.status !== 200) throw result
-            console.log(result);
             return result
         } catch (error) {
             console.log(error);

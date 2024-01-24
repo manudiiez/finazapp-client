@@ -1,8 +1,10 @@
+import { API_URI } from "@/utils/config.js";
+
 export class Goal {
     save = async (body, token) => {
         try {
             body.date = new Date(body.date)
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_GOAL}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_GOAL}`
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -21,7 +23,7 @@ export class Goal {
 
     getAll = async (token) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_GOAL}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_GOAL}`
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
@@ -40,7 +42,7 @@ export class Goal {
     update = async (body, token, id) => {
         try {
             body.date = new Date(body.date)
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_GOAL}/${id}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_GOAL}/${id}`
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {
@@ -59,7 +61,7 @@ export class Goal {
 
     delete = async (token, id) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_GOAL}/${id}`
+            const url = `${API_URI}/${process.env.NEXT_PUBLIC_ENDPOINT_GOAL}/${id}`
             const response = await fetch(url, {
                 method: "DELETE",
                 headers: {
