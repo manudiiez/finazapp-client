@@ -35,7 +35,7 @@ const RegisterForm = ({ data }) => {
                 email: formValue.email,
                 password: formValue.password,
                 redirect: true,
-                callbackUrl: '/panel'
+                callbackUrl: '/'
             });
             setLoading(false)
         }

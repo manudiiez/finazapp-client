@@ -18,7 +18,7 @@ const LoginForm = () => {
                 await signIn("credentials", {
                     ...formValue,
                     redirect: true,
-                    callbackUrl: '/panel',
+                    callbackUrl: '/',
                 });
                 setLoading(false)
             } catch (error) {

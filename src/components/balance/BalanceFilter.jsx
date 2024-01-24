@@ -11,7 +11,7 @@ const BalanceFilter = () => {
                 {
                     data.map((item) => (
                         <li key={item.name}>
-                            <Link href={`/panel?startDate=${item.startDate}&endDate=${item.endDate}`}>{item.name}</Link>
+                            <Link href={`/?startDate=${item.startDate}&endDate=${item.endDate}`}>{item.name}</Link>
                         </li>
                     ))
                 }

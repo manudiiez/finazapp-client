@@ -53,7 +53,7 @@ const TransactionForm = ({ categories, initialValues, mode = "create", session, 
             icon: "success",
             title: `Transaccion creada!!`
         })
-        window.location.href = "/panel"
+        window.location.href = "/"
     }
 
     const updateTrasaction = async () => {
@@ -69,7 +69,7 @@ const TransactionForm = ({ categories, initialValues, mode = "create", session, 
             icon: "success",
             title: `Transaccion editada correctamente!!`
         })
-        window.location.href = "/panel"
+        window.location.href = "/"
     }
 
     const handleSubmit = async (e) => {
@@ -223,7 +223,7 @@ const TransactionForm = ({ categories, initialValues, mode = "create", session, 
                     icon: "success",
                     title: "Transaccion eliminada!!"
                 })
-                window.location.href = "/panel"
+                window.location.href = "/"
             }
         });
     }

@@ -8,7 +8,7 @@ const Footer = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link href="/panel">
+                        <Link href="/">
                             <IconList className={styles.iconList} />
                             <span>
                                 Transacciones
