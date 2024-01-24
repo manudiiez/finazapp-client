@@ -3,11 +3,11 @@ import { useState } from 'react';
 import styles from '../forms.module.scss'
 import { User } from '@/api/user';
 import Swal from 'sweetalert2';
+import { signOut } from 'next-auth/react';
 
 const SettingsForm = ({ user, token }) => {
 
     const userCtrl = new User()
-
 
     const [values, setValues] = useState({
         email: user.email,
@@ -25,11 +25,22 @@ const SettingsForm = ({ user, token }) => {
             timer: 1500,
             timerProgressBar: true,
         });
-        await Toast.fire({
-            icon: "success",
-            title: `Usuario editado!!`
-        })
-        window.location.href = "/panel/settings"
+        await Swal.fire({
+            title: "Para editar el usuario, es necesario cerrar la sesión",
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: "Cerrar",
+            denyButtonText: `Cancelar`
+        }).then(async (result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                await Toast.fire({
+                    icon: "success",
+                    title: `Usuario editado!!`
+                })
+                signOut({ callbackUrl: '/join/login' })
+            }
+        });
     }
 
     const handleChange = (e) => {
