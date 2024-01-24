@@ -19,7 +19,6 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
 const PieChartComponent = ({ categories }) => {
     const allZero = categories.every(transaction => transaction.value === 0);
-
     if (categories.length === 0 || allZero) {
         return (
             <div className={styles.container}>

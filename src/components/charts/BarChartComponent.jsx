@@ -65,7 +65,7 @@ const BarChartComponent = ({ data, categories }) => {
     if (data.length === 0) {
         return (
             <div className={styles.container}>
-                <Message text="No hay datos" height={100} />
+                <Message text="No hay datos" />
             </div>
         );
     }

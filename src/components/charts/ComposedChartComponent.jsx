@@ -4,39 +4,6 @@ import styles from './charts.module.scss'
 import Message from '../shared/Message';
 
 const ComposedChartComponent = ({ data }) => {
-    // const data = [
-    //     {
-    //         name: 'Ene',
-    //         Ingresos: 4000,
-    //         Gastos: 2500,
-    //         Balance: 1500,
-    //     },
-    //     {
-    //         name: 'Feb',
-    //         Ingresos: 500,
-    //         Gastos: 2800,
-    //         Balance: -2300,
-    //     },
-    //     {
-    //         name: 'Mar',
-    //         Ingresos: 100,
-    //         Gastos: 200,
-    //         Balance: -100,
-    //     },
-    //     {
-    //         name: 'Abr',
-    //         Ingresos: 4500,
-    //         Gastos: 1000,
-    //         Balance: 3500,
-    //     },
-    //     {
-    //         name: 'May',
-    //         Ingresos: 2000,
-    //         Gastos: 2000,
-    //         Balance: 0,
-    //     },
-    //     // Agregar más meses con datos de ingresos, gastos y balance
-    // ];
 
     const gradientOffset = () => {
         const dataMax = Math.max(...data.map((i) => i.Balance));
@@ -57,7 +24,7 @@ const ComposedChartComponent = ({ data }) => {
     if (data.length === 0) {
         return (
             <div className={styles.container}>
-                <Message text="No hay datos" height={100} />
+                <Message text="No hay datos" />
 
             </div>
         );
