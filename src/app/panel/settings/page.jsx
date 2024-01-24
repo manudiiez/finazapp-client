@@ -1,17 +1,15 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-const Settings = () => {
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import SettingsHero from "@/components/SettingsHero";
+import SettingsForm from "@/components/forms/settings/SettingsForm";
+import { getServerSession } from "next-auth";
 
-    const [category, setCategory] = useState();
+const Settings = async () => {
 
-    useEffect(() => {
-        console.log(category);
-    }, [category])
-
+    const session = await getServerSession(authOptions);
     return (
         <div>
-            hola
-            {/* <CategoryInput category={category} setCategory={setCategory} /> */}
+            <SettingsHero user={session.user} />
+            <SettingsForm user={session.user} token={session.token} />
         </div>
     )
 }

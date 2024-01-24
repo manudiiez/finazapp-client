@@ -17,21 +17,23 @@ export class User {
         }
     }
 
-    update = async (id, token, body) => {
+    update = async (body, token) => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_USERS}/${id}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_AUTH_UPDATE}`
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `bearer ${token}`,
+                    "token": `${token}`,
                 },
                 body: JSON.stringify(body),
             });
             const result = await response.json()
             if (response.status !== 200) throw result
+            console.log(result);
             return result
         } catch (error) {
+            console.log(error);
             throw error
         }
     }

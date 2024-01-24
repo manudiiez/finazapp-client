@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import Swal from 'sweetalert2';
 
-const RegisterForm = () => {
+const RegisterForm = ({ data }) => {
     const userCtrl = new User()
     const [loading, setLoading] = useState(false);
 
