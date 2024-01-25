@@ -76,13 +76,15 @@
             cursor: pointer;
 
             label {
-                font-size: 1.2rem;
+                cursor: pointer;
+                font-size: 1.4rem;
                 color: $color-3;
             }
 
             input,
             span {
-                font-size: 1.2rem;
+                cursor: pointer;
+                font-size: 1.4rem;
                 background-color: transparent;
                 border: none;
                 text-align: end;
@@ -109,9 +111,11 @@
             label {
                 padding: .6rem 2rem;
                 color: $color-1;
+                cursor: pointer;
             }
 
             input[type='radio']:checked+label {
+                cursor: pointer;
                 background-color: $color-4;
                 border-color: $color-4;
             }
@@ -129,12 +133,22 @@
         padding: 1.5rem;
         font-size: 1.2rem;
         border-radius: 1rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $color-5;
+        }
     }
 
     .button2 {
         width: 100%;
         background-color: $color-error;
         max-width: 600px;
+
+        &:hover {
+            background-color: $color-error;
+            opacity: .8;
+        }
     }
 
     .categoryList {
@@ -236,6 +250,7 @@
             border-bottom: 1px solid $color-8;
             padding: .6rem .3rem;
             height: 40px;
+            cursor: pointer;
         }
 
         div {
@@ -246,6 +261,7 @@
             align-items: center;
             padding: .6rem .3rem;
             border-bottom: 1px solid $color-8;
+            cursor: pointer;
 
             &:nth-of-type(2) {
                 grid-template-columns: 1fr 130px;
@@ -257,12 +273,15 @@
 
             label {
                 color: $color-3;
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+                cursor: pointer;
+
             }
 
             input {
+                cursor: pointer;
                 height: 100%;
-                font-size: 1.2rem;
+                font-size: 1.4rem;
                 padding: 0;
                 width: 50px;
                 border-bottom: none;
@@ -276,9 +295,19 @@
             border-radius: .6rem;
             border: none;
             margin-top: 2rem;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $color-5;
+            }
 
             &:nth-of-type(2) {
                 background-color: $color-error;
+
+                &:hover {
+                    background-color: $color-error;
+                    opacity: .8;
+                }
             }
         }
     }
