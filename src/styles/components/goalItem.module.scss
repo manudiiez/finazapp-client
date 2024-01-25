@@ -34,19 +34,20 @@
                 justify-content: space-between;
 
                 p {
-                    font-size: 1.3rem;
+                    font-size: 1.4rem;
+                    font-weight: 500;
                 }
 
                 span {
-                    font-size: 1.3rem;
+                    font-size: 1.6rem;
                     color: $color-4;
                     font-weight: 500;
                 }
 
                 &:nth-of-type(2) {
                     span {
-                        font-size: 1.1rem;
-                        font-weight: 400;
+                        font-size: 1.4rem;
+                        font-weight: 500;
 
                         &:nth-of-type(2) {
                             color: $color-1;
@@ -80,7 +81,7 @@
 .date {
     width: 100%;
     text-align: end;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: $color-3;
 
     &::first-letter {
