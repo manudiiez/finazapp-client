@@ -6,6 +6,7 @@ import { IconClose } from '@/components/shared/Icons';
 import Swal from 'sweetalert2';
 import { Transaction } from '@/api/transaction';
 import { Category } from '@/api/category';
+import Loader from '@/components/shared/Loader';
 
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -20,7 +21,7 @@ const formatDate = (dateString) => {
 
 const TransactionForm = ({ categories, initialValues, mode = "create", session, id }) => {
 
-
+    const [loading, setLoading] = useState(false);
     const [values, setValues] = useState({
         amount: initialValues?.amount || '',
         date: initialValues?.date || '',
@@ -75,14 +76,29 @@ const TransactionForm = ({ categories, initialValues, mode = "create", session, 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            setLoading(true)
             if (mode === 'create') {
                 await createTrasaction()
             } else {
                 await updateTrasaction()
             }
-
         } catch (error) {
-            console.log(error);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            await Toast.fire({
+                icon: "warning",
+                title: `Surgio un error, por favor complete los datos.`
+            })
+            setLoading(false)
         }
     }
 
@@ -211,6 +227,7 @@ const TransactionForm = ({ categories, initialValues, mode = "create", session, 
             denyButtonText: `Cancelar`
         }).then(async (result) => {
             if (result.isConfirmed) {
+                setLoading(true)
                 await transactionCtrl.delete(session.token, id)
                 const Toast = Swal.mixin({
                     toast: true,
@@ -284,16 +301,14 @@ const TransactionForm = ({ categories, initialValues, mode = "create", session, 
                         placeholder="Nota"
                     />
                 </div>
-                <button type="submit" className={styles.button}>
-                    {
-                        mode === 'create' ? 'CREAR' : 'EDITAR'
-                    }
-                </button>
+                <button type="submit" className={styles.button} disabled={loading}>{loading ? <Loader size="15px" /> : mode === 'create' ? 'CREAR' : 'EDITAR'}</button>
                 {
                     mode !== 'create' && (
-                        <button className={styles.button2} onClick={() => deleteTransaction()} type='button'>
-                            ELIMINAR
-                        </button>
+                        <button type="button" className={styles.button2} disabled={loading} onClick={() => deleteTransaction()} >{loading ? <Loader size="15px" /> : "ELIMINAR"}</button>
+
+                        // <button className={styles.button2} onClick={() => deleteTransaction()} type='button'>
+                        //     ELIMINAR
+                        // </button>
                     )
                 }
             </form>

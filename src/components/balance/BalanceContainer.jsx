@@ -13,13 +13,13 @@ const BalanceContainer = async ({ startDate, endDate }) => {
     const categories = [
         {
             name: 'Gastos',
-            value: parseInt(resume.bills.replace("$", "").replace('.', '')),
+            value: parseInt(resume.bills.replace(/\D/g, '')),
             color: '#A5211E',
             type: 'bill'
         },
         {
             name: 'Ingresos',
-            value: parseInt(resume.incomes.replace("$", "").replace('.', '')),
+            value: parseInt(resume.incomes.replace(/\D/g, '')),
             color: '#3A785E',
             type: 'income'
         },

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from '../forms.module.scss'
 import { Goal } from "@/api/goal";
 import Swal from "sweetalert2";
+import Loader from "@/components/shared/Loader";
 const GoalForm = ({ initialValues, mode = "create", session, id }) => {
 
     const goalCtrl = new Goal()
@@ -17,12 +18,11 @@ const GoalForm = ({ initialValues, mode = "create", session, id }) => {
         return `${year}-${month}-${day}T${hours}:${minutes}`;
     };
 
+    const [loading, setLoading] = useState(false);
     const [values, setValues] = useState({
         amount: initialValues?.amount || '',
-        category: {
-            name: initialValues?.category?.name || '',
-            color: initialValues?.category?.color || ''
-        },
+        category: initialValues?.category?.name || '',
+        color: initialValues?.category?.color || '',
         deadline: initialValues?.deadline || '',
     });
 
@@ -76,46 +76,72 @@ const GoalForm = ({ initialValues, mode = "create", session, id }) => {
             denyButtonText: `Cancelar`
         }).then(async (result) => {
             if (result.isConfirmed) {
-                await goalCtrl.delete(session.token, id)
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 1500,
-                    timerProgressBar: true,
-                });
-                await Toast.fire({
-                    icon: "success",
-                    title: `Objetivo editado!!`
-                })
-                window.location.href = "/panel/goals"
+                try {
+                    setLoading(true)
+                    await goalCtrl.delete(session.token, id)
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    });
+                    await Toast.fire({
+                        icon: "success",
+                        title: `Objetivo editado!!`
+                    })
+                    window.location.href = "/panel/goals"
+                } catch (error) {
+                    setLoading(false)
+                }
             }
         });
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (mode === 'create') {
-            await createGoal()
-        } else {
-            await updateGoal()
+        try {
+            setLoading(true)
+            if (mode === 'create') {
+                await createGoal()
+            } else {
+                await updateGoal()
+            }
+        } catch (error) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            await Toast.fire({
+                icon: "warning",
+                title: `Surgio un error, por favor complete los datos.`
+            })
+            setLoading(false)
         }
     }
 
 
     useEffect(() => {
         if (initialValues) {
-            setValues(initialValues)
+            const obj = { ...initialValues, category: initialValues.category.name, color: initialValues.category.color }
+            setValues(obj)
         }
     }, [initialValues])
 
     return (
         <div className={styles.goalForm}>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="category" onChange={handleChange} placeholder="Titulo" value={values?.category?.name} required />
+                <input type="text" name="category" onChange={handleChange} placeholder="Titulo" value={values?.category} required />
                 <div>
                     <label htmlFor="colorInput">Color</label>
-                    <input type="color" name="color" id="colorInput" onChange={handleChange} value={values?.category?.color} required />
+                    <input type="color" name="color" id="colorInput" onChange={handleChange} value={values?.color} required />
                 </div>
                 <input type="number" name="amount" onChange={handleChange} placeholder="Suma" value={values?.amount} required />
                 <div>
@@ -123,12 +149,13 @@ const GoalForm = ({ initialValues, mode = "create", session, id }) => {
                     <label htmlFor="inputDate">Fecha</label>
                     <input type="datetime-local" name="deadline" id="inputDate" onChange={handleChange} value={formatDate(values?.deadline)} required />
                 </div>
-                <button type="submit">{mode === 'create' ? 'CREAR' : "EDITAR"}</button>
+                <button type="submit" disabled={loading}>{loading ? <Loader size="15px" /> : (mode === 'create' ? 'CREAR' : "EDITAR")}</button>
                 {
                     mode !== 'create' && (
-                        <button type="button" onClick={deleteGoal}>ELIMINAR</button>
+                        <button type="button" disabled={loading} onClick={deleteGoal}>{loading ? <Loader size="15px" /> : "ELIMINAR"}</button>
                     )
                 }
+
             </form>
         </div>
     )

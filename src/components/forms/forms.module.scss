@@ -139,6 +139,11 @@
         &:hover {
             background-color: $color-5;
         }
+
+        &:disabled {
+            background-color: $color-8;
+            cursor: not-allowed;
+        }
     }
 
     .button2 {
@@ -149,6 +154,11 @@
         &:hover {
             background-color: $color-error;
             opacity: .8;
+        }
+
+        &:disabled {
+            background-color: $color-error;
+            cursor: not-allowed;
         }
     }
 
@@ -247,7 +257,7 @@
             cursor: pointer;
         }
 
-        div {
+        >div {
             display: grid;
             height: 40px;
             grid-template-columns: 1fr 50px;
@@ -297,6 +307,11 @@
                 background-color: $color-5;
             }
 
+            &:disabled {
+                background-color: $color-8;
+                cursor: not-allowed;
+            }
+
             &:nth-of-type(2) {
                 background-color: $color-error;
 
@@ -304,7 +319,14 @@
                     background-color: $color-error;
                     opacity: .8;
                 }
+
+                &:disabled {
+                    opacity: .8;
+                    background-color: $color-error;
+                    cursor: not-allowed;
+                }
             }
+
         }
     }
 }

@@ -22,7 +22,6 @@ const LoginForm = () => {
                     callbackUrl: '/',
                 });
             } catch (error) {
-                console.log(error)
             }
         }
     })

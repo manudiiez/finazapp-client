@@ -33,9 +33,7 @@ const Footer = () => {
                         </Link>
                     </li>
                     <li className={styles.iconPlus}>
-                        <Link href="/panel/new" className={classNames({
-                            [styles.isActive]: currentRoute === '/panel/new'
-                        })}>
+                        <Link href="/panel/new">
                             <IconPlus />
                         </Link>
                     </li>
