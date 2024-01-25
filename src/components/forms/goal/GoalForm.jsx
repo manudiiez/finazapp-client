@@ -138,12 +138,18 @@ const GoalForm = ({ initialValues, mode = "create", session, id }) => {
     return (
         <div className={styles.goalForm}>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="category" onChange={handleChange} placeholder="Titulo" value={values?.category} required />
+                <div>
+                    <label htmlFor="nameGoalInput">Titulo</label>
+                    <input type="text" id="nameGoalInput" name="category" onChange={handleChange} value={values?.category} required />
+                </div>
                 <div>
                     <label htmlFor="colorInput">Color</label>
                     <input type="color" name="color" id="colorInput" onChange={handleChange} value={values?.color} required />
                 </div>
-                <input type="number" name="amount" onChange={handleChange} placeholder="Suma" value={values?.amount} required />
+                <div>
+                    <label htmlFor="amountGoalInput">Suma</label>
+                    <input type="number" id="amountGoalInput" name="amount" onChange={handleChange} value={values?.amount} required />
+                </div>
                 <div>
 
                     <label htmlFor="inputDate">Fecha</label>

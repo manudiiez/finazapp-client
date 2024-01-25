@@ -260,7 +260,7 @@
         >div {
             display: grid;
             height: 40px;
-            grid-template-columns: 1fr 50px;
+            grid-template-columns: 1fr 1fr;
             width: 100%;
             align-items: center;
             padding: .6rem .3rem;
@@ -287,8 +287,9 @@
                 height: 100%;
                 font-size: 1.4rem;
                 padding: 0;
-                width: 50px;
+                width: 100%;
                 border-bottom: none;
+                text-align: end;
             }
         }
 
