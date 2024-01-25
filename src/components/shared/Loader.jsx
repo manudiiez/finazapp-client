@@ -1,8 +1,7 @@
 import styles from '@/styles/components/loader.module.scss'
 const Loader = () => {
     return (
-        <span className={styles.loader}>
-        </span >
+        <div className={styles.loader}></div>
     )
 }
 

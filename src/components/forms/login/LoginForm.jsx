@@ -34,7 +34,6 @@ const LoginForm = () => {
                 <input
                     name="email"
                     type="text"
-                    placeholder="Username o email"
                     value={formik.values.email}
                     required
                     onChange={formik.handleChange}
@@ -47,7 +46,6 @@ const LoginForm = () => {
                     name="password"
                     type="password"
                     required
-                    placeholder="Contraseña"
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     error={formik.errors.password}

@@ -32,7 +32,10 @@ const UserButton = () => {
         });
     }
     const { session: data, status } = useSession()
-    if (status === "unauthenticated" || status === "loading") {
+    if (status === "loading") {
+        return null
+    }
+    else if (status === "unauthenticated") {
         return (
             <Link href="/join/login">
                 <IconUser />

@@ -62,7 +62,6 @@ const RegisterForm = ({ data }) => {
                         name="firstname"
                         type="text"
                         required
-                        placeholder="Nombre"
                         value={formik.values.firstname}
                         onChange={formik.handleChange}
                         error={formik.errors.firstname}
@@ -74,7 +73,6 @@ const RegisterForm = ({ data }) => {
                         name="lastname"
                         type="text"
                         required
-                        placeholder="Apellido"
                         value={formik.values.lastname}
                         onChange={formik.handleChange}
                         error={formik.errors.lastname}
@@ -88,7 +86,6 @@ const RegisterForm = ({ data }) => {
                     name="password"
                     type="password"
                     required
-                    placeholder="Contraseña"
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     error={formik.errors.password}

@@ -22,6 +22,7 @@
             border-bottom: 1px solid $color-8;
             height: 50px;
             padding: 0 1rem;
+            font-size: 1.5rem;
         }
     }
 
@@ -32,6 +33,7 @@
         border-radius: 2.5rem;
         border: none;
         cursor: pointer;
+        font-size: 1.5rem;
 
         &:hover {
             background-color: $color-5;
