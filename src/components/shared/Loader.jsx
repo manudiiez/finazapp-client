@@ -1,7 +1,7 @@
 import styles from '@/styles/components/loader.module.scss'
-const Loader = () => {
+const Loader = ({ size }) => {
     return (
-        <div className={styles.loader}></div>
+        <div className={styles.loader} style={{ fontSize: size }}></div>
     )
 }
 

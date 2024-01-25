@@ -7,6 +7,7 @@ import { User } from '@/api/user';
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import Swal from 'sweetalert2';
+import Loader from '@/components/shared/Loader';
 
 const RegisterForm = ({ data }) => {
     const userCtrl = new User()
@@ -18,26 +19,40 @@ const RegisterForm = ({ data }) => {
         validationSchema: validationSchema(),
         validateOnChange: false,
         onSubmit: async (formValue) => {
-            setLoading(true)
-            await userCtrl.register(formValue)
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 1500,
-                timerProgressBar: true,
-            });
-            await Toast.fire({
-                icon: "success",
-                title: "Usuario registrado correctamente!!"
-            });
-            await signIn("credentials", {
-                email: formValue.email,
-                password: formValue.password,
-                redirect: true,
-                callbackUrl: '/'
-            });
-            setLoading(false)
+            try {
+                setLoading(true)
+                await userCtrl.register(formValue)
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                });
+                await Toast.fire({
+                    icon: "success",
+                    title: "Usuario registrado correctamente!!"
+                });
+                await signIn("credentials", {
+                    email: formValue.email,
+                    password: formValue.password,
+                    redirect: true,
+                    callbackUrl: '/'
+                });
+            } catch (error) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                });
+                await Toast.fire({
+                    icon: "warning",
+                    title: error[0]
+                });
+                setLoading(false)
+            }
         }
     })
 
@@ -91,7 +106,7 @@ const RegisterForm = ({ data }) => {
                     error={formik.errors.password}
                 />
             </div>
-            <button type="submit" disabled={loading} >Crear</button>
+            <button type="submit" disabled={loading}>{loading ? <Loader size="15px" /> : 'Crear'}</button>
         </form>
     )
 }

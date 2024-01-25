@@ -1,1 +1,1 @@
-export const API_URI = process.env.ENV === 'DEV' ? 'http://localhost:8080/api' : process.env.NEXT_PUBLIC_API_URL
+export const API_URI = process.env.NEXT_PUBLIC_ENV === 'DEV' ? 'http://localhost:8080/api' : process.env.NEXT_PUBLIC_API_URL

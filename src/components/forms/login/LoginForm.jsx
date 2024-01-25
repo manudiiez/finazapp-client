@@ -4,6 +4,7 @@ import { initialValues, validationSchema } from './LoginForm.form';
 import styles from '../forms.module.scss'
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
+import Loader from '@/components/shared/Loader';
 
 const LoginForm = () => {
     const [loading, setLoading] = useState(false);
@@ -20,7 +21,6 @@ const LoginForm = () => {
                     redirect: true,
                     callbackUrl: '/',
                 });
-                setLoading(false)
             } catch (error) {
                 console.log(error)
             }
@@ -51,7 +51,7 @@ const LoginForm = () => {
                     error={formik.errors.password}
                 />
             </div>
-            <button type="submit" disabled={loading}>Ingresar</button>
+            <button type="submit" disabled={loading}>{loading ? <Loader size="15px" /> : 'Ingresar'}</button>
         </form>
     )
 }
