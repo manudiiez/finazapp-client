@@ -131,7 +131,8 @@
         margin-top: 2rem;
         border: none;
         padding: 1.5rem;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        font-weight: 600;
         border-radius: 1rem;
         cursor: pointer;
 
@@ -228,13 +229,6 @@
             }
         }
     }
-
-    .button,
-    .button2 {
-        margin-top: 3rem;
-        font-size: 1.4rem;
-        font-weight: 600;
-    }
 }
 
 .goalForm {
@@ -296,6 +290,8 @@
             border: none;
             margin-top: 2rem;
             cursor: pointer;
+            font-size: 1.4rem;
+            font-weight: 600;
 
             &:hover {
                 background-color: $color-5;

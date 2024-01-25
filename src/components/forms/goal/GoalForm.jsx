@@ -123,10 +123,10 @@ const GoalForm = ({ initialValues, mode = "create", session, id }) => {
                     <label htmlFor="inputDate">Fecha</label>
                     <input type="datetime-local" name="deadline" id="inputDate" onChange={handleChange} value={formatDate(values?.deadline)} required />
                 </div>
-                <button type="submit">{mode === 'create' ? 'Crear' : "Editar"}</button>
+                <button type="submit">{mode === 'create' ? 'CREAR' : "EDITAR"}</button>
                 {
                     mode !== 'create' && (
-                        <button type="button" onClick={deleteGoal}>Eliminar</button>
+                        <button type="button" onClick={deleteGoal}>ELIMINAR</button>
                     )
                 }
             </form>

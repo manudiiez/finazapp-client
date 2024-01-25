@@ -1,14 +1,21 @@
+"use client"
 import styles from '@/styles/components/footer.module.scss'
 import Link from 'next/link'
 import { IconChart, IconGoal, IconList, IconPlus, IconSettings } from './shared/Icons'
+import { usePathname } from 'next/navigation';
+import classNames from 'classnames';
 
 const Footer = () => {
+    const currentRoute = usePathname();
+
     return (
         <footer className={styles.footer}>
             <nav>
                 <ul>
                     <li>
-                        <Link href="/">
+                        <Link href="/" className={classNames({
+                            [styles.isActive]: currentRoute === '/'
+                        })}>
                             <IconList className={styles.iconList} />
                             <span>
                                 Transacciones
@@ -16,7 +23,9 @@ const Footer = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/panel/charts">
+                        <Link href="/panel/charts" className={classNames({
+                            [styles.isActive]: currentRoute === '/panel/charts'
+                        })}>
                             <IconChart className={styles.iconChart} />
                             <span>
                                 Informes
@@ -24,12 +33,16 @@ const Footer = () => {
                         </Link>
                     </li>
                     <li className={styles.iconPlus}>
-                        <Link href="/panel/new">
+                        <Link href="/panel/new" className={classNames({
+                            [styles.isActive]: currentRoute === '/panel/new'
+                        })}>
                             <IconPlus />
                         </Link>
                     </li>
                     <li>
-                        <Link href="/panel/goals">
+                        <Link href="/panel/goals" className={classNames({
+                            [styles.isActive]: currentRoute === '/panel/goals'
+                        })}>
                             <IconGoal className={styles.iconGoal} />
                             <span>
                                 Plan
@@ -37,7 +50,9 @@ const Footer = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/panel/settings">
+                        <Link href="/panel/settings" className={classNames({
+                            [styles.isActive]: currentRoute === '/panel/settings'
+                        })}>
                             <IconSettings />
                             <span>
                                 Configuración

@@ -88,12 +88,18 @@
                 flex: 0 0 auto;
                 font-size: 1.4rem;
                 font-weight: 600;
+                cursor: pointer;
 
+                &:hover {
+                    color: $color-3;
+                }
+
+                &.isActive {
+                    color: $color-4;
+                    border-bottom: 2px solid $color-4;
+                }
             }
 
-            .isActive {
-                border-bottom: 2px solid $color-4;
-            }
         }
 
         @media (min-width: 700px) {
