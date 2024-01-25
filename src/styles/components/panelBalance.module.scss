@@ -25,7 +25,7 @@
         }
 
         span {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 500;
             color: $color-4;
         }
@@ -40,7 +40,7 @@
             }
 
             span {
-                font-size: 2.5rem;
+                font-size: 2.3rem;
             }
         }
     }
@@ -69,6 +69,7 @@
     width: 100%;
     padding-bottom: .8rem;
     overflow-x: scroll;
+    padding-top: 1rem;
 
     >ul {
         display: flex;
@@ -81,8 +82,15 @@
 
             a {
                 text-decoration: none;
-                font-size: 1.2rem;
+                font-size: 1.4rem;
                 font-weight: 600;
+            }
+
+            &.isActive {
+                a {
+                    color: $color-4;
+                    text-decoration: underline;
+                }
             }
         }
     }

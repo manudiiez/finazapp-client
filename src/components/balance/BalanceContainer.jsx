@@ -26,7 +26,7 @@ const BalanceContainer = async ({ startDate, endDate }) => {
     ]
     return (
         <div className={styles.container}>
-            <BalanceFilter />
+            <BalanceFilter startDate={startDate} endDate={endDate} />
             <div className={styles.content}>
                 <BalanceResume resume={resume} />
                 <section className={styles.chart}>

@@ -1,8 +1,9 @@
 import styles from '@/styles/components/panelBalance.module.scss'
 import { obtenerRangosFechas } from '@/utils/func';
+import classNames from 'classnames';
 import Link from 'next/link'
 
-const BalanceFilter = () => {
+const BalanceFilter = ({ startDate, endDate }) => {
 
     const data = obtenerRangosFechas();
     return (
@@ -10,7 +11,11 @@ const BalanceFilter = () => {
             <ul>
                 {
                     data.map((item) => (
-                        <li key={item.name}>
+                        <li key={item.name}
+                            className={classNames({
+                                [styles.isActive]: startDate === item.startDate && endDate === item.endDate
+                            })}
+                        >
                             <Link href={`/?startDate=${item.startDate}&endDate=${item.endDate}`}>{item.name}</Link>
                         </li>
                     ))
