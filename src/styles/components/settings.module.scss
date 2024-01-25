@@ -10,11 +10,11 @@
     gap: 2rem;
 
     .icon {
-        background: red;
         padding: 2rem;
         border-radius: 2.5rem;
         background-color: $color-6;
-        box-shadow: 0px 4px 4px 0px $color-2;
+        border: 1px solid rgba(255, 255, 255, 0.02);
+        box-shadow: 0px 4px 4px 0px #000000;
         display: flex;
         align-items: center;
         justify-content: center;
